@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/click_booton.ogg-933e0d11729b4dda2063051fccfad3e3.oggstr"
+
+[deps]
+
+source_file="res://sfx/click_booton.ogg"
+dest_files=[ "res://.import/click_booton.ogg-933e0d11729b4dda2063051fccfad3e3.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

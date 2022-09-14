@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://sprites/obj_inte/spawn (2).png" type="Texture" id=1]
+[ext_resource path="res://scenas/SFX.tscn" type="PackedScene" id=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Area2D
+
+export var portal_name = 0
+
+func _ready():
+	$anim_copy.play(\"idle_portal\")
+
+
+func _on_portal_body_entered(body):
+	if body.is_in_group(\"personaje\") and body.num_copy > 0:
+		for i in get_parent().get_parent().num_puntos:
+			get_tree().get_nodes_in_group(\"spawn\")[i].generador(portal_name)
+			i += 1
+		body.cont_copias('subtraction', 1) #Restamos una copia
+	elif body.is_in_group(\"personaje\"):
+		$SFX/vacio.play()
+"
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 13.6827
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle_portal"
+length = 1.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[node name="portal" type="Area2D" groups=[
+"port",
+]]
+scale = Vector2( 0.5, 0.5 )
+script = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+vframes = 4
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="anim_copy" type="AnimationPlayer" parent="."]
+anims/idle_portal = SubResource( 3 )
+
+[node name="SFX" parent="." instance=ExtResource( 2 )]
+[connection signal="body_entered" from="." to="." method="_on_portal_body_entered"]

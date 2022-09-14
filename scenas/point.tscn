@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenas/SFX.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/point.gd" type="Script" id=2]
+[ext_resource path="res://sprites/npc/point_idle_dos (2).png" type="Texture" id=3]
+[ext_resource path="res://sprites/npc/point_idle_dos (1).png" type="Texture" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 7.42707
+
+[sub_resource type="Animation" id=2]
+resource_name = "dance"
+length = 1.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[node name="point" type="Area2D"]
+scale = Vector2( 2, 2 )
+script = ExtResource( 2 )
+folder = ExtResource( 3 )
+archivo = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+vframes = 2
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1.74407, -0.475655 )
+shape = SubResource( 1 )
+
+[node name="anim_npc" type="AnimationPlayer" parent="."]
+anims/dance = SubResource( 2 )
+
+[node name="SFX" parent="." instance=ExtResource( 1 )]
+[connection signal="body_entered" from="." to="." method="_on_point_body_entered"]
+
+[editable path="SFX"]

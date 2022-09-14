@@ -1,0 +1,76 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenas/boot.tscn" type="PackedScene" id=1]
+
+[node name="main_levels" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -644.0
+margin_bottom = -457.0
+rect_min_size = Vector2( 60, 60 )
+custom_constants/vseparation = 15
+custom_constants/hseparation = 15
+columns = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn" parent="GridContainer" instance=ExtResource( 1 )]
+margin_right = 64.0
+margin_bottom = 64.0
+
+[node name="btn2" parent="GridContainer" instance=ExtResource( 1 )]
+margin_left = 79.0
+margin_right = 143.0
+margin_bottom = 64.0
+
+[node name="btn3" parent="GridContainer" instance=ExtResource( 1 )]
+margin_left = 158.0
+margin_right = 222.0
+margin_bottom = 64.0
+
+[node name="btn4" parent="GridContainer" instance=ExtResource( 1 )]
+margin_left = 237.0
+margin_right = 301.0
+margin_bottom = 64.0
+
+[node name="btn5" parent="GridContainer" instance=ExtResource( 1 )]
+margin_left = 316.0
+margin_right = 380.0
+margin_bottom = 64.0
+
+[node name="btn6" parent="GridContainer" instance=ExtResource( 1 )]
+margin_top = 79.0
+margin_right = 64.0
+margin_bottom = 143.0
+
+[node name="btn7" parent="GridContainer" instance=ExtResource( 1 )]
+margin_left = 79.0
+margin_top = 79.0
+margin_right = 143.0
+margin_bottom = 143.0
+
+[node name="btn8" parent="GridContainer" instance=ExtResource( 1 )]
+margin_left = 158.0
+margin_top = 79.0
+margin_right = 222.0
+margin_bottom = 143.0
+
+[node name="btn9" parent="GridContainer" instance=ExtResource( 1 )]
+margin_left = 237.0
+margin_top = 79.0
+margin_right = 301.0
+margin_bottom = 143.0
+
+[node name="btn10" parent="GridContainer" instance=ExtResource( 1 )]
+margin_left = 316.0
+margin_top = 79.0
+margin_right = 380.0
+margin_bottom = 143.0

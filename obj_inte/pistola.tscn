@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scripts/pistola.gd" type="Script" id=1]
+[ext_resource path="res://sprites/obj_inte/pistola_pixel _dos clone.png" type="Texture" id=2]
+[ext_resource path="res://scenas/SFX.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/obj_inte/pistola_pixel _tres.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "disparo_x"
+length = 0.4
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.14, 0.28 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.4
+loop = true
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.140213, 0.280998 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=3]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+
+[sub_resource type="Animation" id=4]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[node name="pistola" type="Sprite" groups=[
+"pistola",
+]]
+position = Vector2( 144, 143.989 )
+texture = ExtResource( 2 )
+vframes = 3
+hframes = 2
+frame = 1
+script = ExtResource( 1 )
+pistola_uno = ExtResource( 2 )
+pistola_dos = ExtResource( 4 )
+
+[node name="Position2D" type="Position2D" parent="."]
+
+[node name="anim_pist" type="AnimationPlayer" parent="."]
+anims/disparo_x = SubResource( 1 )
+anims/disparo_y = SubResource( 2 )
+anims/idle_x = SubResource( 3 )
+anims/idle_y = SubResource( 4 )
+
+[node name="SFX" parent="." instance=ExtResource( 3 )]

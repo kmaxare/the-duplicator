@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/apagado.ogg-e5fe47ba2c27c13627f51cb67991b40b.oggstr"
+
+[deps]
+
+source_file="res://sfx/apagado.ogg"
+dest_files=[ "res://.import/apagado.ogg-e5fe47ba2c27c13627f51cb67991b40b.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

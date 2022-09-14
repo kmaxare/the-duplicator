@@ -1,0 +1,59 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://sfx/click_booton.ogg" type="AudioStream" id=1]
+[ext_resource path="res://sfx/comer_punto.ogg" type="AudioStream" id=2]
+[ext_resource path="res://sfx/vacio.ogg" type="AudioStream" id=3]
+[ext_resource path="res://sfx/rasho.ogg" type="AudioStream" id=4]
+[ext_resource path="res://sfx/golpe.ogg" type="AudioStream" id=5]
+[ext_resource path="res://sfx/spawn_player.ogg" type="AudioStream" id=6]
+[ext_resource path="res://sfx/salto.ogg" type="AudioStream" id=7]
+[ext_resource path="res://sfx/muerte.ogg" type="AudioStream" id=8]
+[ext_resource path="res://sfx/apagado.ogg" type="AudioStream" id=9]
+[ext_resource path="res://sfx/server.ogg" type="AudioStream" id=10]
+[ext_resource path="res://sfx/intro_level.ogg" type="AudioStream" id=11]
+
+[node name="SFX" type="Node" groups=[
+"sfx",
+]]
+
+[node name="boton" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -5.0
+
+[node name="comer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -8.0
+
+[node name="golpe" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -4.0
+
+[node name="muerte" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -7.0
+
+[node name="rasho" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -5.0
+
+[node name="salto" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -10.0
+
+[node name="spaw_player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -19.185
+
+[node name="vacio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -3.0
+
+[node name="intro_level" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[node name="cont_server" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -5.0
+
+[node name="apagado" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )

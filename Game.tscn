@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenas/niveles/nivel_dos.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Game.gd" type="Script" id=2]
+[ext_resource path="res://scenas/niveles/nivel_tres.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenas/niveles/nivel_cuatro.tscn" type="PackedScene" id=8]
+
+[node name="Game" type="Node2D" groups=[
+"game",
+]]
+script = ExtResource( 2 )
+nivel_uno = ExtResource( 1 )
+nivel_dos = ExtResource( 8 )
+nivel_tres = ExtResource( 3 )
+
+[node name="level_act" type="Node2D" parent="." groups=[
+"level",
+]]

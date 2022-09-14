@@ -1,0 +1,180 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://tile/base_ULT.tres" type="TileSet" id=1]
+[ext_resource path="res://estilosT/editundo.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scenas/mains/Boton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/Menu.gd" type="Script" id=4]
+[ext_resource path="res://sprites/instrucciones.png" type="Texture" id=5]
+[ext_resource path="res://sprites/Pildora.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 90
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "desenfoque_entrada"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "enfoque_salida"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "size"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("instruc:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1.1, 1.3, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 2.1, 2.1 ), Vector2( 2, 2 ) ]
+}
+
+[sub_resource type="DynamicFont" id=6]
+size = 20
+font_data = ExtResource( 2 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 22, 0, 0, 23, 0, 0, 24, 0, 0, 25, 0, 0, 26, 0, 0, 27, 0, 0, 28, 0, 0, 29, 0, 0, 30, 1, 0, 31, 1, 0, 65536, 1, 0, 65537, 1, 0, 65566, 1, 0, 65567, 1, 0, 131072, 0, 0, 131103, 0, 0, 196608, 0, 0, 196639, 0, 0, 262144, 0, 0, 262175, 0, 0, 327680, 0, 0, 327711, 0, 0, 393216, 0, 0, 393247, 0, 0, 458752, 0, 0, 458783, 0, 0, 524288, 0, 0, 524319, 0, 0, 589824, 0, 0, 589855, 0, 0, 655360, 0, 0, 655391, 0, 0, 720896, 0, 0, 720927, 0, 0, 786432, 0, 0, 786463, 0, 0, 851968, 0, 0, 851999, 0, 0, 917504, 0, 0, 917535, 0, 0, 983040, 0, 0, 983071, 0, 0, 1048576, 0, 0, 1048607, 0, 0, 1114112, 1, 0, 1114113, 1, 0, 1114142, 1, 0, 1114143, 1, 0, 1179648, 1, 0, 1179649, 1, 0, 1179650, 0, 0, 1179651, 0, 0, 1179652, 0, 0, 1179653, 0, 0, 1179654, 0, 0, 1179655, 0, 0, 1179656, 0, 0, 1179657, 0, 0, 1179658, 0, 0, 1179659, 0, 0, 1179660, 0, 0, 1179661, 0, 0, 1179662, 0, 0, 1179663, 0, 0, 1179664, 0, 0, 1179665, 0, 0, 1179666, 0, 0, 1179667, 0, 0, 1179668, 0, 0, 1179669, 0, 0, 1179670, 0, 0, 1179671, 0, 0, 1179672, 0, 0, 1179673, 0, 0, 1179674, 0, 0, 1179675, 0, 0, 1179676, 0, 0, 1179677, 0, 0, 1179678, 1, 0, 1179679, 1, 0 )
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -302.0
+margin_top = -160.5
+margin_right = 302.0
+margin_bottom = -81.5
+custom_fonts/font = SubResource( 1 )
+text = "The duplicator"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="Control" parent="."]
+margin_right = 1023.0
+margin_bottom = 600.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Autor" type="Label" parent="Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -242.5
+margin_top = -84.5
+margin_right = 242.5
+margin_bottom = -15.5
+custom_fonts/font = SubResource( 2 )
+text = "Keys to play:"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="anim_per" type="AnimationPlayer" parent="Menu/Autor"]
+anims/desenfoque_entrada = SubResource( 3 )
+anims/enfoque_salida = SubResource( 4 )
+anims/size = SubResource( 5 )
+
+[node name="instruc" type="Sprite" parent="Menu/Autor"]
+position = Vector2( 240.436, 119.736 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+
+[node name="logo" type="Sprite" parent="Menu/Autor"]
+visible = false
+position = Vector2( 113.436, 126.736 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 6 )
+vframes = 2
+
+[node name="autors" type="Label" parent="Menu/Autor"]
+visible = false
+margin_left = 172.0
+margin_top = 76.0
+margin_right = 416.0
+margin_bottom = 178.0
+custom_fonts/font = SubResource( 6 )
+text = "Designer: Kevin Arenas
+Art: Luis Llacza
+    Kevin Arenas
+Itch.io:
+ itch.io/profile/kevin-max"
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Boton" parent="Menu" instance=ExtResource( 3 )]
+margin_left = -228.0
+margin_top = 156.0
+margin_right = -172.0
+margin_bottom = 182.0
+
+[node name="Boton2" parent="Menu" instance=ExtResource( 3 )]
+margin_left = 155.0
+margin_top = 156.0
+margin_right = 245.0
+margin_bottom = 182.0
+text = "Credits"
+
+[editable path="Menu/Boton"]

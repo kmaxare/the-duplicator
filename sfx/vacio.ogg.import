@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/vacio.ogg-ee66e6c2f025262a995c28cb7d0e338a.oggstr"
+
+[deps]
+
+source_file="res://sfx/vacio.ogg"
+dest_files=[ "res://.import/vacio.ogg-ee66e6c2f025262a995c28cb7d0e338a.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

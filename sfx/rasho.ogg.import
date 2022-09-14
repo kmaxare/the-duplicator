@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/rasho.ogg-43e800c6fe1f54f9a8dd943e6641f0e6.oggstr"
+
+[deps]
+
+source_file="res://sfx/rasho.ogg"
+dest_files=[ "res://.import/rasho.ogg-43e800c6fe1f54f9a8dd943e6641f0e6.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
