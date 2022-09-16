@@ -17,12 +17,11 @@ var live_virus = true
 #PARAMETROS DINAMICOS
 export var num_copy = 0
 
-
 #ESTADOS_CHARACTER
 enum states_player {flat, jump, freeze}
 var virus_state = states_player
 
-var raycast_back = false # Parametro coenctado a raycast inferior para detectar suelo
+var raycast_back = false # Parametro conectado a raycast inferior para detectar suelo
 
 
 func _ready():
@@ -57,8 +56,8 @@ func move(delta):
 		velocidad_y_tope = 0
 		virus_state = states_player.flat
 		if !$Raycast.active: $Raycast.active = true #Activador de funcionamiento nodo raycast para desplazar uniddad en el eje x
-		if $coll_circle.disabled == false and raycast_back: coll_alteracion(0) # Si la colicion circular esta activada la desactivamos y activamos la colicion cuadrada
-
+		if raycast_back: coll_alteracion(0) # Si la colicion circular esta activada la desactivamos y activamos la colicion cuadrada
+		
 		if direction_x != 0:
 			match direction_x:
 				-1: $Sprite.flip_h = true
@@ -74,13 +73,10 @@ func move(delta):
 			virus_state = states_player.jump
 			speed.y = -vel_salto
 			
-#	elif !is_on_floor() and !raycast_back:
 	elif !raycast_back:
 		if !is_on_floor(): coll_alteracion(1)
-		if velocidad_y_tope < speed.y: # Identificacion de caida
-			velocidad_y_tope = speed.y
 		else: $anim_player.play("walk")
-
+		
 		
 func muerte(tipo_muerte):
 	if live_virus:
@@ -88,7 +84,7 @@ func muerte(tipo_muerte):
 		movement_enable = false
 		coll_alteracion(2) # Desactivar colicion
 		match tipo_muerte:
-			0:#Pistola
+			0: #Pistola
 				$anim_player.play("congelado")
 				yield(get_tree().create_timer(4.0),"timeout")
 		$coll_square.disabled = true
@@ -120,35 +116,27 @@ func _on_VisibilityNotifier2D_screen_exited():
 func coll_alteracion(tipe_coll):
 	match tipe_coll:
 		0: # Activar colicion cuadrada
-#			$coll_square.disabled = false
-#			$coll_circle.disabled = true
 			$coll_square.set_shape(RectangleShape2D.new())
 			$coll_square.shape.extents = Vector2(28, 28)
-			
 		1: # Activar colicion circular
 			if  virus_state == states_player.jump:
-#				$coll_circle.disabled = false
-#				$coll_square.disabled = true
 				$coll_square.set_shape(CircleShape2D.new())
 				$coll_square.shape.radius = 28
 		2:
-			$coll_circle.disabled = true
 			$coll_square.disabled = true
 
-
-func movPosition(direction): #Funcion para desplazar al jugador de izquierda a derecha en los saltos
-	if direction:
-		global_position -= Vector2(-1.5,0)
-	elif !direction:
-		global_position -= Vector2(+1.5,0)
+#Funcion para desplazar al jugador de izquierda a derecha en los saltos
+func movPosition(direction):
+	if direction: global_position -= Vector2(-1.5,0)
+	elif !direction: global_position -= Vector2(+1.5,0)
 
 
 func null_salto():
 	speed.y = 40
 	velocidad_y_tope = 0
+	
 
 func AnimationPlayer(anim_type):
 	match anim_type:
 		'spawn': $anim_player.play("spawn")
 		
-
