@@ -15,7 +15,6 @@ func _ready():
 
 func _on_server_body_entered(body):
 	if body.is_in_group("proceso"):
-		yield(get_tree().create_timer(1.10),"timeout")
 		if num_proces < tope_server: #Si el servidor no esta a tope funciona
 			num_proces += 1
 			get_parent().get_parent().get_node("SFX/cont_server").play()
@@ -25,6 +24,17 @@ func _on_server_body_entered(body):
 			informe_server(tipo_informe.error)
 			if server_est == tipo_informe.funcional or server_est == tipo_informe.error: contador_reinicio() # Empieza el conteo 
 			
+			
+func _on_server_body_exited(body):
+#	if body.is_in_group("proceso") and num_proces:
+	if body.is_in_group("proceso"): #Si es (player/npc) y ingreso un cuerpo
+		if num_proces > 0: num_proces -= 1
+		if num_proces < 0: num_proces = 0 # Si el numero de procesos pasa a negativo entonces lo transformamos a 0
+		if num_proces == 0:
+			pistola_server(false) #Apagamos el eliminador de virus
+			informe_server(tipo_informe.funcional)
+		refresh()
+		
 
 func informe_server(param_server_est, num_contador = 0):
 	if $anim_text.play(): $anim_text.stop() #Si alguna animacion se ejecuta, la paramos
@@ -74,12 +84,4 @@ func pistola_server(interruptor_stado):
 			if get_tree().get_nodes_in_group("pistola")[i].id_pistola == 1:
 				get_tree().get_nodes_in_group("pistola")[i].estado_pistola = false
 
-func _on_server_body_exited(body):
-#	if body.is_in_group("proceso") and num_proces:
-	if body.is_in_group("proceso"): #Si es (player/npc) y ingreso un cuerpo
-		if num_proces > 0: num_proces -= 1
-		if num_proces < 0: num_proces = 0 # Si el numero de procesos pasa a negativo entonces lo transformamos a 0
-		if num_proces == 0:
-			pistola_server(false) #Apagamos el eliminador de virus
-			informe_server(tipo_informe.funcional)
-		refresh()
+
