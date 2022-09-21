@@ -17,7 +17,6 @@
 [ext_resource path="res://scenas/bug.tscn" type="PackedScene" id=17]
 [ext_resource path="res://scripts/narrador.gd" type="Script" id=18]
 
-
 [sub_resource type="DynamicFont" id=1]
 size = 60
 font_data = ExtResource( 8 )
@@ -78,7 +77,6 @@ margin_bottom = 348.0
 text = "Pero todo sacrificio tiene su recompensa! es hora de que termines el trabajo para que fuiste creado."
 align = 1
 valign = 1
-autowrap = true
 
 [node name="title" type="Label" parent="Control"]
 margin_left = 1959.13
