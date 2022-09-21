@@ -263,19 +263,21 @@ vel_salto = 520
 gravedad = 1800
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 position = Vector2( 0, -26 )
 scale = Vector2( 2.2, 2.2 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 9
+frame = 8
 
 [node name="Label" type="Label" parent="."]
 modulate = Color( 0.764706, 0.972549, 0.968627, 0 )
 anchor_right = 0.796
-margin_left = -30.6654
-margin_top = -21.9458
-margin_right = 13.3346
-margin_bottom = 14.0542
+margin_left = -21.4148
+margin_top = -35.8861
+margin_right = 22.5852
+margin_bottom = 0.113899
 custom_fonts/font = SubResource( 1 )
 text = "0"
 align = 1

@@ -12,28 +12,28 @@ var direction_x = 0
 #LIMITACIONES
 var velocidad_y_tope = 0 # Variable para reconocer caida del personaje
 var movement_enable = false
-var live_virus = true
 
 #PARAMETROS DINAMICOS
 export var num_copy = 0
 
 #ESTADOS_CHARACTER
-enum states_player {flat, jump, freeze}
+enum states_player {flat, jump, shovel, death}
 var virus_state = states_player
 
 var raycast_back = false # Parametro conectado a raycast inferior para detectar suelo
 
 
 func _ready():
+	$Sprite.visible = true
 	$Label.text = str(num_copy)
-	AnimationPlayer('spawn')
+	actionPlayer('action_spawn')
 	yield ($anim_player, "animation_finished")
 	virus_state = states_player.jump # Nace en el aire por que estando en el aire se activan sus coliciones
 	movement_enable = true
 
 	
-func _physics_process(delta): if movement_enable: move(delta)
-	
+func _physics_process(delta):
+	if movement_enable: move(delta)
 
 func cont_copias(operation_type, num): #Numero de copias del virus
 	match operation_type:
@@ -48,7 +48,6 @@ func move(delta):
 	distance.x = speed_force * delta
 	speed.x = (direction_x * distance.x)/delta
 	speed.y += gravedad * delta
-	
 	move_and_slide(speed, Vector2(0,-1))
 	
 	if is_on_floor():
@@ -62,14 +61,13 @@ func move(delta):
 			match direction_x:
 				-1: $Sprite.flip_h = true
 				1: $Sprite.flip_h = false
-			if is_on_wall(): $anim_player.play("idle") #Animacion detenida si coliciona con una pared
-			else: $anim_player.play("move")
+			if is_on_wall(): actionPlayer('action_idle') #Animacion detenida si coliciona con una pared
+			else: actionPlayer('action_move')
 			
 		else: $anim_player.play("idle")
 	
 		if Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("espacio"):
-			$anim_player.play("jump")
-			$SFX/salto.play()
+			actionPlayer('action_jump')
 			virus_state = states_player.jump
 			speed.y = -vel_salto
 			
@@ -79,36 +77,32 @@ func move(delta):
 		
 		
 func muerte(tipo_muerte):
-	if live_virus:
-		live_virus = false
+	if virus_state != states_player.death:
 		movement_enable = false
+		virus_state = states_player.death
 		coll_alteracion(2) # Desactivar colicion
 		match tipo_muerte:
 			0: #Pistola
-				
-				$coll_square.disabled = true
-				$anim_player.play("death") #Animacion de emuerte por vala
-				$SFX/muerte.play() # Explocion de virusito por vala
+				actionPlayer('death_gun')
 				yield($anim_player, "animation_finished")
 				#yield(get_tree().create_timer(4.0),"timeout")
 				queue_free()
 			1: #Pincho
-				$anim_player.play("congelado") #Animacion de emuerte por pincho enpalado xD
-				$SFX/muerte.play()  # Sonido muerte por enpalamiento
+				actionPlayer('death_spike')
 				yield($anim_player, "animation_finished")
 				#OJO - Aqui va a a ver un bug si hay mas de un enpalado, y muere el ultimo activo el juego se quedara congelado.
 		GameHundler.game_over()
 	
-
-func bug(): # Simulando un bug?? xD
-		$anim_player.play("jump")
-#		yield($anim_player,"animation_finished")
-		yield(get_tree().create_timer(0.1),"timeout")
-		$coll_square.disabled = true
-		yield(get_tree().create_timer(0.2),"timeout")
-		movement_enable = false
-		$anim_player.play("bug")
-		get_parent().escenas(1)#Reproducir escena de final dos
+# Simulando un bug?? xD
+#func bug(): 
+#		$anim_player.play("jump")
+##		yield($anim_player,"animation_finished")
+#		yield(get_tree().create_timer(0.1),"timeout")
+#		$coll_square.disabled = true
+#		yield(get_tree().create_timer(0.2),"timeout")
+#		movement_enable = false
+#		$anim_player.play("bug")
+#		get_parent().escenas(1)
 
 
 func _on_VisibilityNotifier2D_screen_exited():
@@ -130,6 +124,7 @@ func coll_alteracion(tipe_coll):
 		2:
 			$coll_square.disabled = true
 
+
 #Funcion para desplazar al jugador de izquierda a derecha en los saltos
 func movPosition(direction):
 	if direction: global_position -= Vector2(-1.5,0)
@@ -141,6 +136,21 @@ func null_salto():
 	velocidad_y_tope = 0
 
 
-func AnimationPlayer(anim_type):
+func actionPlayer(anim_type):
 	match anim_type:
-		'spawn': $anim_player.play("spawn")
+		'action_spawn':
+			$anim_player.play("spawn")
+		'action_jump':
+			$anim_player.play("jump")
+			$SFX/salto.play()
+		'action_idle':
+			$anim_player.play("idle")
+		'action_move':
+			$anim_player.play("move")
+		'death_gun':
+			$coll_square.disabled = true
+			$anim_player.play("death") #Animacion de emuerte por vala
+			$SFX/muerte.play() # Explocion de virusito por vala
+		'death_spike':
+			$anim_player.play("congelado") #Animacion de emuerte por pincho enpalado xD
+			$SFX/muerte.play()  # Sonido muerte por enpalamiento

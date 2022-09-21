@@ -1,6 +1,6 @@
 extends Node
 
-#setget para que cadaves que cambiamos el valor de la variable se ejecute la funcion
+#setget para que cada vez que cambiamos el valor de la variable se ejecute la funcion
 #var nivel_act: int = 0 setget current_level_changed
 var nivel_act = 1
 
@@ -16,7 +16,13 @@ func _ready():
 	
 func game_over():
 	var num_pers = get_tree().get_nodes_in_group("personaje").size()
-	if int(num_pers) == 1 or _reset == true:
+	var num_pers_live = 0;
+	var personaje = get_tree().get_nodes_in_group("personaje")
+	for x in range(num_pers):
+		if personaje[x] != null:
+			if personaje[x].virus_state != personaje[x].states_player.death: num_pers_live += 1
+		
+	if int(num_pers_live) == 0 or _reset == true:
 #		get_tree().change_scene("res://scenas/mains/gameover.tscn")
 		cargar_nivel()
 		_reset = false
