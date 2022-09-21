@@ -85,14 +85,19 @@ func muerte(tipo_muerte):
 		coll_alteracion(2) # Desactivar colicion
 		match tipo_muerte:
 			0: #Pistola
-				$anim_player.play("congelado")
-				yield(get_tree().create_timer(4.0),"timeout")
-		$coll_square.disabled = true
-		$anim_player.play("death")
-		$SFX/muerte.play()
-		yield($anim_player, "animation_finished")
+				
+				$coll_square.disabled = true
+				$anim_player.play("death") #Animacion de emuerte por vala
+				$SFX/muerte.play() # Explocion de virusito por vala
+				yield($anim_player, "animation_finished")
+				#yield(get_tree().create_timer(4.0),"timeout")
+				queue_free()
+			1: #Pincho
+				$anim_player.play("congelado") #Animacion de emuerte por pincho enpalado xD
+				$SFX/muerte.play()  # Sonido muerte por enpalamiento
+				yield($anim_player, "animation_finished")
+				#OJO - Aqui va a a ver un bug si hay mas de un enpalado, y muere el ultimo activo el juego se quedara congelado.
 		GameHundler.game_over()
-		queue_free()
 	
 
 func bug(): # Simulando un bug?? xD
@@ -134,9 +139,8 @@ func movPosition(direction):
 func null_salto():
 	speed.y = 40
 	velocidad_y_tope = 0
-	
+
 
 func AnimationPlayer(anim_type):
 	match anim_type:
 		'spawn': $anim_player.play("spawn")
-		

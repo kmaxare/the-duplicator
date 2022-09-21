@@ -139,7 +139,7 @@ tile_data = PoolIntArray( 22, 8, 0, 65537, 8, 0, 65538, 8, 0, 65539, 8, 0, 65540
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
 format = 1
-tile_data = PoolIntArray( 524308, 1610612740, 0, 524309, 1610612740, 0, 917522, 1610612740, 0, 917523, 1610612740, 0 )
+tile_data = PoolIntArray( 524308, 1610612740, 0, 524309, 1610612740, 0, 917522, 1610612740, 0, 917523, 1610612740, 0, 1245222, 4, 0, 1245223, 4, 0 )
 
 [node name="tile_lv" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
@@ -149,6 +149,9 @@ tile_data = PoolIntArray( -851981, 2, 0, -851980, 2, 0, -851979, 2, 0, -851978, 
 
 [node name="personaje" parent="." instance=ExtResource( 1 )]
 position = Vector2( 443.851, 296.864 )
+
+[node name="personaje2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 268.899, 329.208 )
 
 [node name="Elementos" type="Node2D" parent="."]
 
@@ -176,7 +179,7 @@ position = Vector2( 720.861, 81.4244 )
 [node name="pincho" type="Node2D" parent="Elementos"]
 
 [node name="puas3" parent="Elementos/pincho" instance=ExtResource( 13 )]
-position = Vector2( 304.079, 230.798 )
+position = Vector2( 623.844, 313.128 )
 
 [node name="puas4" parent="Elementos/pincho" instance=ExtResource( 13 )]
 position = Vector2( 334.936, 134.93 )
