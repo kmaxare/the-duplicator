@@ -169,7 +169,6 @@ tipe_end = 2
 
 [node name="portal" parent="Elementos" instance=ExtResource( 4 )]
 position = Vector2( 96.9656, 319.894 )
-scale = Vector2( 1, 1 )
 
 [node name="spawn" parent="Elementos" instance=ExtResource( 3 )]
 position = Vector2( 720.861, 81.4244 )
