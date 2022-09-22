@@ -24,7 +24,7 @@ var raycast_back = false # Parametro conectado a raycast inferior para detectar 
 
 
 func _ready():
-	$Sprite.visible = true
+#	$Sprite.visible = true
 	$Label.text = str(num_copy)
 	actionPlayer('action_spawn')
 	yield ($anim_player, "animation_finished")
