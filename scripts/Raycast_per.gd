@@ -13,5 +13,10 @@ func _process(delta):
 		elif $izq.is_colliding() and !$der.is_colliding() and !$center.is_colliding():
 			get_parent().movPosition(true) #false: Movimiento izquierda / true: Movimiento derecho
 		active = false
-	if $back.is_colliding() and get_parent().raycast_back != true: get_parent().raycast_back = true
-	elif !$back.is_colliding() and get_parent().raycast_back != false: get_parent().raycast_back = false
+
+	if $back_izq.is_colliding() and $back_der.is_colliding():
+		if get_parent().raycast_back != true:
+			get_parent().raycast_back = true
+	elif !$back_izq.is_colliding() and !$back_der.is_colliding():
+		if get_parent().raycast_back != false:
+			get_parent().raycast_back = false
