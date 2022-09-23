@@ -80,14 +80,16 @@ func muerte(tipo_muerte):
 	if virus_state != states_player.death:
 		movement_enable = false
 		virus_state = states_player.death
-		coll_alteracion(2) # Desactivar colicion
+		
 		match tipo_muerte:
 			0: #Pistola
+				coll_alteracion(2) # Desactivar colicion
 				actionPlayer('death_gun')
 				yield($anim_player, "animation_finished")
 				#yield(get_tree().create_timer(4.0),"timeout")
 				queue_free()
 			1: #Pincho
+				coll_alteracion(0) # Cambiamos colicion a cuadrada
 				actionPlayer('death_spike')
 				yield($anim_player, "animation_finished")
 				#OJO - Aqui va a a ver un bug si hay mas de un enpalado, y muere el ultimo activo el juego se quedara congelado.
@@ -118,7 +120,7 @@ func coll_alteracion(tipe_coll):
 			$coll_square.set_shape(RectangleShape2D.new())
 			$coll_square.shape.extents = Vector2(28, 28)
 		1: # Activar colicion circular
-			if  virus_state == states_player.jump:
+			if virus_state == states_player.jump:
 				$coll_square.set_shape(CircleShape2D.new())
 				$coll_square.shape.radius = 28
 		2:

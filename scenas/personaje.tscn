@@ -329,12 +329,12 @@ scale = Vector2( 0.5, 0.1 )
 enabled = true
 
 [node name="back_izq" type="RayCast2D" parent="Raycast"]
-position = Vector2( -25.9534, 29.489 )
+position = Vector2( -27, 30 )
 scale = Vector2( 1, 0.1 )
 enabled = true
 
 [node name="back_der" type="RayCast2D" parent="Raycast"]
-position = Vector2( 26.1975, 29.7332 )
+position = Vector2( 27, 30 )
 scale = Vector2( 1, 0.1 )
 enabled = true
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
