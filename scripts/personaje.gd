@@ -10,7 +10,7 @@ var speed = Vector2()
 var direction_x = 0
 
 #LIMITACIONES
-var velocidad_y_tope = 0 # Variable para reconocer caida del personaje
+
 var movement_enable = false
 
 #PARAMETROS DINAMICOS
@@ -33,6 +33,7 @@ func _ready():
 
 	
 func _physics_process(delta):
+	print(speed.y)
 	if movement_enable: move(delta)
 
 func cont_copias(operation_type, num): #Numero de copias del virus
@@ -52,10 +53,9 @@ func move(delta):
 	
 	if is_on_floor():
 		speed.y = 0
-		velocidad_y_tope = 0
 		virus_state = states_player.flat
 		if !$Raycast.active: $Raycast.active = true #Activador de funcionamiento nodo raycast para desplazar uniddad en el eje x
-		if raycast_back: coll_alteracion(0) # Si la colicion circular esta activada la desactivamos y activamos la colicion cuadrada
+		if raycast_back: coll_alteracion('collSquare') # Si la colicion circular esta activada la desactivamos y activamos la colicion cuadrada
 		
 		if direction_x != 0:
 			match direction_x:
@@ -69,11 +69,13 @@ func move(delta):
 		if Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("espacio"):
 			actionPlayer('action_jump')
 			virus_state = states_player.jump
+			coll_alteracion('collCircle')
+			$timer_fig_coll.start()
 			speed.y = -vel_salto
 			
-	elif !raycast_back:
-		if !is_on_floor(): coll_alteracion(1)
-		else: $anim_player.play("walk")
+#	elif !raycast_back:
+#		if !is_on_floor() and speed.y != 0: coll_alteracion('collCircle')
+#		else: $anim_player.play("walk")
 		
 		
 func muerte(tipo_muerte):
@@ -83,13 +85,13 @@ func muerte(tipo_muerte):
 		
 		match tipo_muerte:
 			0: #Pistola
-				coll_alteracion(2) # Desactivar colicion
+				coll_alteracion('collDisabled') # Desactivar colicion
 				actionPlayer('death_gun')
 				yield($anim_player, "animation_finished")
 				#yield(get_tree().create_timer(4.0),"timeout")
 				queue_free()
 			1: #Pincho
-				coll_alteracion(0) # Cambiamos colicion a cuadrada
+				coll_alteracion('collSquare') # Cambiamos colicion a cuadrada
 				actionPlayer('death_spike')
 				yield($anim_player, "animation_finished")
 				#OJO - Aqui va a a ver un bug si hay mas de un enpalado, y muere el ultimo activo el juego se quedara congelado.
@@ -114,16 +116,16 @@ func _on_VisibilityNotifier2D_screen_exited():
 	$Camera2D.current = true
 
 
-func coll_alteracion(tipe_coll):
+func coll_alteracion(tipe_coll: String):
 	match tipe_coll:
-		0: # Activar colicion cuadrada
+		'collSquare': # Activar colicion cuadrada
 			$coll_square.set_shape(RectangleShape2D.new())
 			$coll_square.shape.extents = Vector2(28, 28)
-		1: # Activar colicion circular
+		'collCircle': # Activar colicion circular
 			if virus_state == states_player.jump:
 				$coll_square.set_shape(CircleShape2D.new())
 				$coll_square.shape.radius = 28
-		2:
+		'CollDisabled':
 			$coll_square.disabled = true
 
 
@@ -135,7 +137,6 @@ func movPosition(direction):
 
 func null_salto():
 	speed.y = 40
-	velocidad_y_tope = 0
 
 
 func actionPlayer(anim_type):
@@ -156,3 +157,10 @@ func actionPlayer(anim_type):
 		'death_spike':
 			$anim_player.play("congelado") #Animacion de emuerte por pincho enpalado xD
 			$SFX/muerte.play()  # Sonido muerte por enpalamiento
+
+# Cuando termine el tiempo del timer
+func _on_Timer_timeout():
+	if(speed.y > 0):
+		print('Salto de fe')
+		global_position.y += -5
+		coll_alteracion('collSquare')

@@ -337,6 +337,11 @@ enabled = true
 position = Vector2( 26, 30 )
 scale = Vector2( 1, 0.1 )
 enabled = true
+
+[node name="timer_fig_coll" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="timeout" from="timer_fig_coll" to="." method="_on_Timer_timeout"]
 
 [editable path="SFX"]
