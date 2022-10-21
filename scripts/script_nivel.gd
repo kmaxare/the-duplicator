@@ -28,7 +28,7 @@ func _process(delta):
 		for x in get_tree().get_nodes_in_group("personaje").size():
 			if get_tree().get_nodes_in_group("personaje")[x]:
 				if get_tree().get_nodes_in_group("personaje")[x]._move_swich:
-					get_tree().get_nodes_in_group("personaje")[x].muerte(1)
+					get_tree().get_nodes_in_group("personaje")[x].muerte('pincho')
 				bloqueo = true
 				$personaje._move_swich = true
 				

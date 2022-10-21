@@ -8,4 +8,4 @@ func _ready():
 
 func _on_puas_body_entered(body):
 	if body.is_in_group("personaje"):
-		body.muerte(1)
+		body.muerte('pincho')

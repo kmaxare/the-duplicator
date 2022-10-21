@@ -17,7 +17,7 @@ func _process(delta):
 	
 	if move != null: # Si coliciona
 		if move.collider.is_in_group("proceso"):
-			move.collider.muerte(0)
+			move.collider.muerte('pistola')
 		elif move.collider.is_in_group("tile_falso"):
 			move.collider.romper()
 		elif move.collider.is_in_group("ojo_maq"):

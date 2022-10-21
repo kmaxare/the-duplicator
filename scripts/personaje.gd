@@ -33,7 +33,6 @@ func _ready():
 
 	
 func _physics_process(delta):
-	print(speed.y)
 	if movement_enable: move(delta)
 
 func cont_copias(operation_type, num): #Numero de copias del virus
@@ -78,19 +77,19 @@ func move(delta):
 #		else: $anim_player.play("walk")
 		
 		
-func muerte(tipo_muerte):
+func muerte(tipo_muerte: String):
 	if virus_state != states_player.death:
 		movement_enable = false
 		virus_state = states_player.death
 		
 		match tipo_muerte:
-			0: #Pistola
+			'pistola': #Pistola
 				coll_alteracion('collDisabled') # Desactivar colicion
 				actionPlayer('death_gun')
 				yield($anim_player, "animation_finished")
 				#yield(get_tree().create_timer(4.0),"timeout")
 				queue_free()
-			1: #Pincho
+			'pincho': #Pincho
 				coll_alteracion('collSquare') # Cambiamos colicion a cuadrada
 				actionPlayer('death_spike')
 				yield($anim_player, "animation_finished")
@@ -139,7 +138,7 @@ func null_salto():
 	speed.y = 40
 
 
-func actionPlayer(anim_type):
+func actionPlayer(anim_type: String):
 	match anim_type:
 		'action_spawn':
 			$anim_player.play("spawn")
@@ -161,6 +160,5 @@ func actionPlayer(anim_type):
 # Cuando termine el tiempo del timer
 func _on_Timer_timeout():
 	if(speed.y > 0):
-		print('Salto de fe')
 		global_position.y += -5
-		coll_alteracion('collSquare')
+#		coll_alteracion('collSquare')
