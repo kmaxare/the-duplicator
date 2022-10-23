@@ -33,6 +33,7 @@ func _ready():
 
 	
 func _physics_process(delta):
+	print(speed.y)
 	if movement_enable: move(delta)
 
 func cont_copias(operation_type, num): #Numero de copias del virus
@@ -159,6 +160,6 @@ func actionPlayer(anim_type: String):
 
 # Cuando termine el tiempo del timer
 func _on_Timer_timeout():
-	if(speed.y > 0):
+	if(speed.y > 1500):
 		global_position.y += -5
 		coll_alteracion('collSquare')
