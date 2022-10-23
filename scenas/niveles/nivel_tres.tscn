@@ -76,7 +76,6 @@ position = Vector2( 147.329, 145.276 )
 
 [node name="portal" parent="Elementos" instance=ExtResource( 4 )]
 position = Vector2( 385.719, 337.231 )
-scale = Vector2( 1, 1 )
 
 [node name="spawn" parent="Elementos" instance=ExtResource( 3 )]
 position = Vector2( 317.42, 159.325 )

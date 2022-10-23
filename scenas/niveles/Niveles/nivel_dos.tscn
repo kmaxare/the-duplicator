@@ -83,7 +83,6 @@ position = Vector2( 513.608, 288.392 )
 
 [node name="point" parent="puntos" instance=ExtResource( 4 )]
 position = Vector2( 254.941, 128.692 )
-tope_spawn = 4
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 382.8, 224.152 )

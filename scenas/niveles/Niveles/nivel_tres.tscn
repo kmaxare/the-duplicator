@@ -69,9 +69,6 @@ tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 
 [node name="personaje" parent="." instance=ExtResource( 1 )]
 position = Vector2( 257.453, 160.64 )
 
-[node name="personaje2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 376.616, 283.672 )
-
 [node name="Elementos" type="Node2D" parent="."]
 
 [node name="end" parent="Elementos" instance=ExtResource( 5 )]
@@ -96,7 +93,6 @@ position = Vector2( 399.925, 312.88 )
 
 [node name="point" parent="puntos" instance=ExtResource( 7 )]
 position = Vector2( 513.983, 226.045 )
-tope_spawn = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 382.8, 224.152 )

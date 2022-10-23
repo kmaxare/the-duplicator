@@ -28,6 +28,7 @@ tracks/0/keys = {
 [node name="point" type="Area2D"]
 scale = Vector2( 2, 2 )
 script = ExtResource( 2 )
+tope_spawn = 1
 folder = ExtResource( 3 )
 archivo = ExtResource( 4 )
 
