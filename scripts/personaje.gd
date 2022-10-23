@@ -33,7 +33,6 @@ func _ready():
 
 	
 func _physics_process(delta):
-	print(speed.y)
 	if movement_enable: move(delta)
 
 func cont_copias(operation_type, num): #Numero de copias del virus
