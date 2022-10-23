@@ -1,12 +1,11 @@
 extends Sprite
 
-# 0=izquierda, 1=derecha, 2=arriba, 3=abajo
-export var position_ball = 0
-export var id_pistola = 0
-export var tipe_pistoll = 0
+export var position_ball = 0 # 0=izquierda, 1=derecha, 2=arriba, 3=abajo
+export var id_pistola = 0 # Identificar a que grupo por id pertenece
+export var tipe_pistoll = 0 # 0=pistolRasho, 1=pistolServer
 
-export (Texture) var pistola_uno
-export (Texture) var pistola_dos
+export (Texture) var pistola_uno # pistolRasho
+export (Texture) var pistola_dos # pistolServer
 
 var timeSpawn_ball = 0 # Tiempo de espera para la generacion de la siguiente vala
 var velocityBall = 0 # velocidad de desplazamiento de la vala

@@ -75,13 +75,13 @@ func contador_reinicio():
 	informe_server(tipo_informe.funcional)
 
 func pistola_server(interruptor_stado):
-	if interruptor_stado:
-		for i in get_parent().get_parent().num_pistolas:#Activador de eliminacion de procesos
-			if get_tree().get_nodes_in_group("pistola")[i].id_pistola == 1: #Identifica si es la pistola perteneciente
-				get_tree().get_nodes_in_group("pistola")[i].estado_pistola = true # Si es la pistola, la activa
-	elif !interruptor_stado:
-		for i in get_parent().get_parent().num_pistolas:#	Apagamos quemadores de proceso
-			if get_tree().get_nodes_in_group("pistola")[i].id_pistola == 1:
-				get_tree().get_nodes_in_group("pistola")[i].estado_pistola = false
-
-
+	if get_parent().get_parent().num_pistolas <= 0: # Si no existen pistolas
+		return
+		
+	for pistol in get_parent().get_parent().num_pistolas:
+		if get_tree().get_nodes_in_group("pistola")[pistol].tipe_pistoll == 1:
+			if interruptor_stado:
+				get_tree().get_nodes_in_group("pistola")[pistol].estado_pistola = true
+			elif !interruptor_stado:
+				get_tree().get_nodes_in_group("pistola")[pistol].estado_pistola = false
+	

@@ -74,11 +74,6 @@ position = Vector2( 223.093, 125.926 )
 
 [node name="Elementos" type="Node2D" parent="."]
 
-[node name="end" parent="Elementos" instance=ExtResource( 5 )]
-position = Vector2( 451.326, 382.373 )
-scale = Vector2( 1, 1 )
-tipe_end = 1
-
 [node name="portal" parent="Elementos" instance=ExtResource( 3 )]
 position = Vector2( 160.096, 319.095 )
 
@@ -91,7 +86,6 @@ position = Vector2( 223.972, 93.4298 )
 "rashos_laser",
 ] instance=ExtResource( 8 )]
 position = Vector2( 398.862, 110.938 )
-id_rasho = 1
 
 [node name="rasho_laser" parent="Elementos/contend_rasho" index="0"]
 position = Vector2( -14.8712, 193.06 )
@@ -116,9 +110,11 @@ margin_right = -61.476
 margin_bottom = -45.1192
 
 [node name="pistola" parent="Elementos" instance=ExtResource( 10 )]
-position = Vector2( 529.863, 393.99 )
+position = Vector2( 529.371, 377.739 )
 position_ball = 2
-id_pistola = 1
+
+[node name="puerta" parent="Elementos" instance=ExtResource( 5 )]
+position = Vector2( 451.583, 383.161 )
 
 [node name="puntos" type="Node2D" parent="."]
 
