@@ -310,31 +310,26 @@ shape = SubResource( 11 )
 [node name="Raycast" type="Node2D" parent="."]
 script = ExtResource( 5 )
 
-[node name="izq" type="RayCast2D" parent="Raycast"]
+[node name="raycastIzq" type="RayCast2D" parent="Raycast"]
 position = Vector2( -22.6724, -29 )
 rotation = 3.14159
 scale = Vector2( 0.3, 0.1 )
 enabled = true
 
-[node name="der" type="RayCast2D" parent="Raycast"]
+[node name="raycastDer" type="RayCast2D" parent="Raycast"]
 position = Vector2( 22.6859, -29 )
 rotation = 3.14159
 scale = Vector2( 0.3, 0.1 )
 enabled = true
 
-[node name="center" type="RayCast2D" parent="Raycast"]
+[node name="raycastCenter" type="RayCast2D" parent="Raycast"]
 position = Vector2( 0, -30 )
 rotation = 3.14159
 scale = Vector2( 0.5, 0.1 )
 enabled = true
 
-[node name="back_izq" type="RayCast2D" parent="Raycast"]
-position = Vector2( -26, 30 )
-scale = Vector2( 1, 0.1 )
-enabled = true
-
-[node name="back_der" type="RayCast2D" parent="Raycast"]
-position = Vector2( 26, 30 )
+[node name="raycastBack" type="RayCast2D" parent="Raycast"]
+position = Vector2( 0, 30 )
 scale = Vector2( 1, 0.1 )
 enabled = true
 

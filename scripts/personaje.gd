@@ -161,4 +161,4 @@ func actionPlayer(anim_type: String):
 func _on_Timer_timeout():
 	if(speed.y > 0):
 		global_position.y += -5
-#		coll_alteracion('collSquare')
+		coll_alteracion('collSquare')

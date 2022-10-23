@@ -11,7 +11,6 @@
 [ext_resource path="res://obj_inte/puerta.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenas/puas.tscn" type="PackedScene" id=11]
 
-
 [node name="Escenario" type="Node2D" groups=[
 "escena",
 ]]
@@ -29,10 +28,10 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 132.036
-margin_top = 1.71477
-margin_right = 132.036
-margin_bottom = 1.71472
+margin_left = 53.4611
+margin_top = 118.349
+margin_right = 53.4611
+margin_bottom = 118.349
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -81,11 +80,9 @@ position = Vector2( 84.115, 367.292 )
 
 [node name="portal" parent="Elementos" instance=ExtResource( 7 )]
 position = Vector2( 608.488, 288.646 )
-scale = Vector2( 1, 1 )
 
 [node name="portal2" parent="Elementos" instance=ExtResource( 7 )]
 position = Vector2( 576.82, 113.405 )
-scale = Vector2( 1, 1 )
 portal_name = 1
 
 [node name="spawn" parent="Elementos" instance=ExtResource( 2 )]
