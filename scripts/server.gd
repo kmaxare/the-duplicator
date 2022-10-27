@@ -9,21 +9,21 @@ var num_proces = 0
 enum tipo_informe {funcional, error, contador}
 var server_est = tipo_informe
 
-var arrayUser = []
+var arrayPer = []
 
 func _ready():
 	server_est = tipo_informe.funcional
 	refresh()
 	
 func _physics_process(delta):
-	print(arrayUser)
+	print(arrayPer)
 
 func _on_server_body_entered(body):
 	if !body.is_in_group("proceso"): return
-
+	if not body.id_per in arrayPer: arrayPer.append(body.id_per)
 	if num_proces < tope_server: # Si el servidor no esta a tope funciona
 		num_proces += 1
-		arrayUser.append(body.id)
+		
 		get_parent().get_parent().get_node("SFX/cont_server").play()
 		refresh()
 
@@ -34,15 +34,19 @@ func _on_server_body_entered(body):
 			
 			
 func _on_server_body_exited(body):
-#	if body.is_in_group("proceso") and num_proces:
-	if body.is_in_group("proceso"): #Si es (player/npc) y ingreso un cuerpo
-		arrayUser.remove(body)
-		if num_proces > 0: num_proces -= 1
-		if num_proces < 0: num_proces = 0 # Si el numero de procesos pasa a negativo entonces lo transformamos a 0
-		if num_proces == 0:
-			pistola_server(false) #Apagamos el eliminador de virus
-			informe_server(tipo_informe.funcional)
-		refresh()
+	if not body.is_in_group("proceso"): return
+	
+#	for id in len(arrayPer):
+#		if body.id_per == arrayPer[id]:
+#			arrayPer.
+	arrayPer.remove(body.id_per)
+	
+	if num_proces > 0: num_proces -= 1
+	if num_proces < 0: num_proces = 0 # Si el numero de procesos pasa a negativo entonces lo transformamos a 0
+	if num_proces == 0:
+		pistola_server(false) #Apagamos el eliminador de virus
+		informe_server(tipo_informe.funcional)
+	refresh()
 		
 
 func informe_server(param_server_est, num_contador = 0):

@@ -9,14 +9,13 @@ var distance = Vector2()
 var speed = Vector2()
 var direction_x = 0
 
-var id = 3
-
 #LIMITACIONES
 
 var movement_enable = false
 
 #PARAMETROS DINAMICOS
 export var num_copy = 0
+var id_per = null
 
 #ESTADOS_CHARACTER
 enum states_player {flat, jump, shovel, death}
@@ -27,6 +26,7 @@ var raycast_back = false # Parametro conectado a raycast inferior para detectar 
 
 func _ready():
 #	$Sprite.visible = true
+	id_per = get_tree().get_nodes_in_group('escena')[0].assignPerId()
 	$Label.text = str(num_copy)
 	actionPlayer('action_spawn')
 	yield ($anim_player, "animation_finished")

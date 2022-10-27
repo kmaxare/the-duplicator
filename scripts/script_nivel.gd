@@ -6,6 +6,8 @@ var num_rashos
 
 var bloqueo = true # bloquea algunas acciones de teclas del nivel
 
+var perIdDesigner = 0 # Esta variable sirve para designar un id a cada personaje en escena
+
 func _ready():
 	num_puntos = get_tree().get_nodes_in_group("spawn").size()
 	num_pistolas = get_tree().get_nodes_in_group("pistola").size()
@@ -40,3 +42,6 @@ func escenas(value):
 			$Control._text(1)
 			$Control._text(2)
 	
+func assignPerId():
+	perIdDesigner += 1
+	return perIdDesigner 
