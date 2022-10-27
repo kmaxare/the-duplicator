@@ -9,6 +9,8 @@ var distance = Vector2()
 var speed = Vector2()
 var direction_x = 0
 
+var id = 3
+
 #LIMITACIONES
 
 var movement_enable = false

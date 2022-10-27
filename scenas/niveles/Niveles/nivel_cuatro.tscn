@@ -130,7 +130,7 @@ tope_server = 2
 id_server = 1
 
 [node name="area_coll" type="CollisionShape2D" parent="Elementos/server"]
-position = Vector2( 0.238248, -98.2411 )
+position = Vector2( -4.6727, -103.152 )
 shape = SubResource( 1 )
 
 [node name="fond" type="Sprite" parent="Elementos/server"]
