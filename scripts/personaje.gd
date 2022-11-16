@@ -27,6 +27,7 @@ var raycast_back = false # Parametro conectado a raycast inferior para detectar 
 func _ready():
 #	$Sprite.visible = true
 	id_per = get_tree().get_nodes_in_group('escena')[0].assignPerId()
+	print(id_per)
 	$Label.text = str(num_copy)
 	actionPlayer('action_spawn')
 	yield ($anim_player, "animation_finished")
@@ -96,6 +97,12 @@ func muerte(tipo_muerte: String):
 				actionPlayer('death_spike')
 				yield($anim_player, "animation_finished")
 				#OJO - Aqui va a a ver un bug si hay mas de un enpalado, y muere el ultimo activo el juego se quedara congelado.
+			'servidor': #Servidor
+				coll_alteracion('collDisabled') # Desactivar colicion
+				actionPlayer('death_gun')
+				yield($anim_player, "animation_finished")
+				#yield(get_tree().create_timer(4.0),"timeout")
+				queue_free()
 		GameHundler.game_over()
 	
 # Simulando un bug?? xD

@@ -12,7 +12,6 @@ func _ready():
 	num_puntos = get_tree().get_nodes_in_group("spawn").size()
 	num_pistolas = get_tree().get_nodes_in_group("pistola").size()
 	num_rashos = get_tree().get_nodes_in_group("rashos_laser").size()
-	print (num_rashos)
 	
 func desac_coll():
 	for i in get_tree().get_nodes_in_group("port").size():

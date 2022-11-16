@@ -159,6 +159,10 @@ __meta__ = {
 [node name="anim_text" type="AnimationPlayer" parent="Elementos/server"]
 anims/parpadeo = SubResource( 3 )
 
+[node name="timer_node" type="Timer" parent="Elementos/server"]
+wait_time = 6.0
+one_shot = true
+
 [node name="puntos" type="Node2D" parent="."]
 
 [node name="point" parent="puntos" instance=ExtResource( 7 )]
@@ -181,5 +185,6 @@ zoom = Vector2( 0.75, 0.75 )
 [node name="SFX" parent="." instance=ExtResource( 14 )]
 [connection signal="body_entered" from="Elementos/server" to="Elementos/server" method="_on_server_body_entered"]
 [connection signal="body_exited" from="Elementos/server" to="Elementos/server" method="_on_server_body_exited"]
+[connection signal="timeout" from="Elementos/server/timer_node" to="Elementos/server" method="_on_timer_node_timeout"]
 
 [editable path="Elementos/contend_rasho"]
