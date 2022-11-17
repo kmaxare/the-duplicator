@@ -23,33 +23,35 @@ func _physics_process(delta):
 func _on_server_body_entered(body):
 	if !body.is_in_group("proceso"): return
 	
-	num_proces += 1
-	
 	if not body.id_per in arrayPer:
 		arrayPer.append(body.id_per)
 
-	if num_proces < tope_server: # Si el servidor no esta a tope funciona
+	if len(arrayPer) < tope_server: # Si el servidor no esta a tope funciona
 		get_parent().get_parent().get_node("SFX/cont_server").play()
 		refresh_text()
 
-	elif num_proces >= tope_server:
+	elif len(arrayPer) >= tope_server:
 		informe_server(tipo_informe.error)
 		if server_est == tipo_informe.error: contador_reinicio() # Empieza el conteo 
+	print(arrayPer)
 
 
 func _on_server_body_exited(body):
 	if not body.is_in_group("proceso"): return
-	
+
+	# TODO: Creo que el eliminar un valor del array tiene que hacerse de otra forma ya que esta habiendo conflictos cuando desaparece un proceso
 	for id in range(len(arrayPer)):
 		if arrayPer[id] == body.id_per: arrayPer.remove(id)
 
-	if num_proces > 0:
-		num_proces -= 1
+	if len(arrayPer) < tope_server and server_est == tipo_informe.contador:
+		$timer_node.stop()
+	
 	if num_proces < 1:
 		num_proces = 0 # Si el numero de procesos pasa a negativo entonces lo transformamos a 0
 		pistola_server(false) #Apagamos el eliminador de virus
 		informe_server(tipo_informe.funcional)
 	refresh_text()
+	print(arrayPer)
 
 
 func informe_server(param_server_est):

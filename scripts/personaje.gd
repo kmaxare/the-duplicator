@@ -27,7 +27,6 @@ var raycast_back = false # Parametro conectado a raycast inferior para detectar 
 func _ready():
 #	$Sprite.visible = true
 	id_per = get_tree().get_nodes_in_group('escena')[0].assignPerId()
-	print(id_per)
 	$Label.text = str(num_copy)
 	actionPlayer('action_spawn')
 	yield ($anim_player, "animation_finished")
