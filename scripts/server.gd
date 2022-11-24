@@ -32,8 +32,7 @@ func _on_server_body_entered(body):
 
 	elif len(arrayPer) > tope_server:
 		informe_server(tipo_informe.error)
-		if server_est == tipo_informe.error: contador_reinicio() # Empieza el conteo 
-	print(arrayPer)
+		if server_est == tipo_informe.error: contador_reinicio() # Empieza el conteo
 
 
 func _on_server_body_exited(body):
@@ -50,7 +49,6 @@ func _on_server_body_exited(body):
 		pistola_server(false) #Apagamos el eliminador de virus
 		informe_server(tipo_informe.funcional)
 	refresh_text()
-	print(arrayPer)
 
 
 func informe_server(param_server_est):
