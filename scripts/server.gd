@@ -23,14 +23,14 @@ func _physics_process(delta):
 func _on_server_body_entered(body):
 	if !body.is_in_group("proceso"): return
 	
-	if not body.id_per in arrayPer:
+	if not body.id_per in arrayPer and body.virus_state != body.states_player.death:
 		arrayPer.append(body.id_per)
 
-	if len(arrayPer) < tope_server: # Si el servidor no esta a tope funciona
+	if len(arrayPer) <= tope_server: # Si el servidor no esta a tope funciona
 		get_parent().get_parent().get_node("SFX/cont_server").play()
 		refresh_text()
 
-	elif len(arrayPer) >= tope_server:
+	elif len(arrayPer) > tope_server:
 		informe_server(tipo_informe.error)
 		if server_est == tipo_informe.error: contador_reinicio() # Empieza el conteo 
 	print(arrayPer)
@@ -40,11 +40,10 @@ func _on_server_body_exited(body):
 	if not body.is_in_group("proceso"): return
 
 	# TODO: Creo que el eliminar un valor del array tiene que hacerse de otra forma ya que esta habiendo conflictos cuando desaparece un proceso
-	for id in range(len(arrayPer)):
-		if arrayPer[id] == body.id_per: arrayPer.remove(id)
-
-	if len(arrayPer) < tope_server and server_est == tipo_informe.contador:
-		$timer_node.stop()
+	if body.id_per in arrayPer:
+		arrayPer.erase(body.id_per)
+#	for id in range(len(arrayPer)):
+#		if arrayPer[id] == body.id_per: arrayPer.remove(id)
 	
 	if num_proces < 1:
 		num_proces = 0 # Si el numero de procesos pasa a negativo entonces lo transformamos a 0
@@ -59,6 +58,7 @@ func informe_server(param_server_est):
 	
 	match param_server_est:
 		tipo_informe.funcional:
+			
 			server_est = tipo_informe.funcional
 			for i in get_parent().get_parent().num_rashos: #Activacion defensas
 				get_tree().get_nodes_in_group("rashos_laser")[i]._activo()
@@ -77,13 +77,13 @@ func informe_server(param_server_est):
 
 func refresh_text():
 	if server_est == tipo_informe.funcional:
-		$text.text = str(num_proces)+ "/" +str(tope_server)
+		$text.text = str(len(arrayPer))+ "/" +str(tope_server)
 	elif server_est == tipo_informe.contador:
 		$text.text = 'ERROR'
 
 
 func contador_reinicio():
-	informe_server(tipo_informe.contador) #Tipo de informe del servidor y texto a imprimir
+	informe_server(tipo_informe.contador) # Tipo de informe del servidor y texto a imprimir
 	refresh_text()
 
 
@@ -99,14 +99,15 @@ func pistola_server(interruptor_stado):
 
 
 func matar_procesos():
+	var procesos_condenados = arrayPer
 	if len(arrayPer) > 0: # Si existen procesos
 		var procesos_size = get_tree().get_nodes_in_group("proceso").size()
 		for value in range(procesos_size):
-			if (get_tree().get_nodes_in_group("proceso")[value].id_per in arrayPer):
+			if (get_tree().get_nodes_in_group("proceso")[value].id_per in procesos_condenados):
 				get_tree().get_nodes_in_group("proceso")[value].muerte('servidor')
 
 
 func _on_timer_node_timeout():
-	informe_server(tipo_informe.funcional)
+#	informe_server(tipo_informe.funcional)
 	matar_procesos()
 	refresh_text()
