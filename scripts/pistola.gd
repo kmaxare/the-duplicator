@@ -44,8 +44,10 @@ func _ready():
 			velocityBall = 160
 		1:
 			texture = pistola_dos
-			timeSpawn_ball = 1
-			velocityBall = 40
+			timeSpawn_ball = 2
+			velocityBall = 160
+			estado_pistola = true
+
 
 func _physics_process(delta):
 	if estado_pistola and ball_cola:
@@ -62,6 +64,7 @@ func _physics_process(delta):
 			2: $anim_pist.play("idle_y")
 			3: $anim_pist.play("idle_y")
 
+
 func disparar(): # Instanciar bala
 	$SFX/rasho.play()
 	var newbala = bala.instance()
@@ -73,5 +76,3 @@ func disparar(): # Instanciar bala
 	ball_cola = false
 	yield(get_tree().create_timer(timeSpawn_ball), "timeout")
 	ball_cola = true
-
-	
