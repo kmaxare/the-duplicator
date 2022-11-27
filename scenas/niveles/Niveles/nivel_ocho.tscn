@@ -126,7 +126,7 @@ dir_disparo = 3
 position = Vector2( 498.229, 49.1474 )
 
 [node name="tubos3" parent="plomeria" instance=ExtResource( 16 )]
-position = Vector2( 495.741, 366.402 )
+position = Vector2( 496.645, 368.661 )
 dir_disparo = 2
 
 [node name="tubos4" parent="plomeria" instance=ExtResource( 16 )]
@@ -140,6 +140,9 @@ position = Vector2( 387.283, 162.453 )
 
 [node name="personaje" parent="." instance=ExtResource( 1 )]
 position = Vector2( 387.853, 289.579 )
+
+[node name="personaje2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 279.609, 156.892 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 382.8, 224.152 )

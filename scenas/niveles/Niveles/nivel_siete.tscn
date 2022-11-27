@@ -83,11 +83,6 @@ position = Vector2( 304.125, 345.803 )
 [node name="puas2" parent="Elementos/pincho" instance=ExtResource( 12 )]
 position = Vector2( 336.955, 346.181 )
 
-[node name="plomeria" type="Node2D" parent="Elementos"]
-
-[node name="tubos" parent="Elementos/plomeria" instance=ExtResource( 16 )]
-position = Vector2( 400.362, 240.99 )
-
 [node name="tileFalso" type="Node2D" parent="Elementos"]
 
 [node name="tile_falso" parent="Elementos/tileFalso" instance=ExtResource( 17 )]
@@ -105,6 +100,11 @@ position = Vector2( 367.874, 176.228 )
 [node name="pistola" parent="Elementos" instance=ExtResource( 10 )]
 position = Vector2( 645.66, 239.847 )
 tipe_pistoll = 1
+
+[node name="plomeria" type="Node2D" parent="."]
+
+[node name="tubos" parent="plomeria" instance=ExtResource( 16 )]
+position = Vector2( 400.362, 240.99 )
 
 [node name="puntos" type="Node2D" parent="."]
 

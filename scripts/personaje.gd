@@ -83,7 +83,6 @@ func muerte(tipo_muerte: String):
 	if virus_state != states_player.death:
 		movement_enable = false
 		virus_state = states_player.death
-		
 		match tipo_muerte:
 			'pistola': #Pistola
 				coll_alteracion('collDisabled') # Desactivar colicion
@@ -95,14 +94,17 @@ func muerte(tipo_muerte: String):
 				coll_alteracion('collSquare') # Cambiamos colicion a cuadrada
 				actionPlayer('death_spike')
 				yield($anim_player, "animation_finished")
-				#OJO - Aqui va a a ver un bug si hay mas de un enpalado, y muere el ultimo activo el juego se quedara congelado.
 			'servidor': #Servidor
 				coll_alteracion('collDisabled') # Desactivar colicion
 				actionPlayer('death_gun')
 				yield($anim_player, "animation_finished")
 				#yield(get_tree().create_timer(4.0),"timeout")
 				queue_free()
+		
 		GameHundler.game_over()
+		
+	if tipo_muerte == 'pistola' and virus_state == states_player.death:
+		animacionesPersonaje('picar')
 	
 # Simulando un bug?? xD
 #func bug(): 
@@ -170,3 +172,12 @@ func _on_Timer_timeout():
 	if(speed.y > 1500):
 		global_position.y += -5
 		coll_alteracion('collSquare')
+
+
+func animacionesPersonaje(animacion):
+#	yield($anim_player, "animation_finished")
+	match animacion:
+		'picar':
+			$anim_player.play("picarConUnPalo")
+			#Sonido gracioso de picar a un virus muerto
+	

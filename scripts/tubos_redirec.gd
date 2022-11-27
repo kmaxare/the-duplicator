@@ -17,13 +17,13 @@ func _on_tubos_body_entered(body):
 func dir_tubo(dir_disparo):
 	match dir_disparo:
 		0: #izquierda
-			$Sprite_tubo.rotation_degrees = 90
+			$Sprite_tubo.frame = 1
 		1: #derecha
-			$Sprite_tubo.rotation_degrees = 270
+			$Sprite_tubo.frame = 3
 		2: #arriba
-			$Sprite_tubo.rotation_degrees = 180
+			$Sprite_tubo.frame = 0
 		3:# abajo
-			$Sprite_tubo.rotation_degrees = 0
+			$Sprite_tubo.frame = 2
 
 func girar():
 	dir_disparo += 1
