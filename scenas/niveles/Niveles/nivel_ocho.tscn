@@ -1,0 +1,149 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scenas/personaje.tscn" type="PackedScene" id=1]
+[ext_resource path="res://tile/base_ULT.tres" type="TileSet" id=2]
+[ext_resource path="res://obj_inte/portal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://obj_inte/spawn.tscn" type="PackedScene" id=4]
+[ext_resource path="res://obj_inte/puerta.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenas/point.tscn" type="PackedScene" id=6]
+[ext_resource path="res://obj_inte/pistola.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenas/puas.tscn" type="PackedScene" id=12]
+[ext_resource path="res://estilosT/Label.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenas/SFX.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scripts/script_nivel.gd" type="Script" id=15]
+[ext_resource path="res://obj_inte/tubos.tscn" type="PackedScene" id=16]
+[ext_resource path="res://obj_inte/tile_falso.tscn" type="PackedScene" id=17]
+
+[node name="Escenario" type="Node2D" groups=[
+"escena",
+]]
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -37.6572 ]
+}
+
+[node name="Control" type="Control" parent="."]
+margin_left = -64.0
+margin_top = -127.0
+margin_right = 1628.0
+margin_bottom = 947.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -128.0
+margin_top = -31.0
+margin_right = -591.0
+margin_bottom = -334.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" parent="Control" instance=ExtResource( 13 )]
+margin_left = 421.431
+margin_top = 420.0
+margin_right = 731.431
+margin_bottom = 538.0
+text = "Solo pensar en esos antivirus me
+Enfurece :(
+pero es fácil vencerlos si se puedes
+si lo llenas de procesos innecesarios.
+
+La unión te hace fuerte!!!"
+
+[node name="tile_fond" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 65544, 13, 0, 65545, 13, 0, 65546, 13, 0, 65547, 13, 0, 65548, 13, 0, 65549, 13, 0, 65550, 13, 0, 65551, 13, 0, 131080, 13, 0, 131087, 13, 0, 196616, 13, 0, 196623, 13, 0, 262149, 13, 0, 262150, 13, 0, 262151, 13, 0, 262152, 13, 0, 262153, 13, 0, 262154, 13, 0, 262155, 13, 0, 262156, 13, 0, 262157, 13, 0, 262158, 13, 0, 262159, 13, 0, 262160, 13, 0, 262161, 13, 0, 262162, 13, 0, 327685, 13, 0, 327686, 13, 0, 327687, 13, 0, 327688, 13, 0, 327689, 13, 0, 327690, 13, 0, 327691, 13, 0, 327692, 13, 0, 327693, 13, 0, 327694, 13, 0, 327695, 13, 0, 327696, 13, 0, 327697, 13, 0, 327698, 13, 0, 327700, 0, 0, 327701, 0, 0, 393224, 13, 0, 393225, 13, 0, 393226, 13, 0, 393231, 13, 0, 393234, 13, 0, 393235, 13, 0, 393236, 0, 0, 458760, 13, 0, 458767, 13, 0, 458770, 13, 0, 458771, 13, 0, 458772, 0, 0, 458773, 0, 0, 524293, 13, 0, 524294, 13, 0, 524295, 13, 0, 524296, 13, 0, 524297, 13, 0, 524298, 13, 0, 524299, 13, 0, 524300, 13, 0, 524301, 13, 0, 524302, 13, 0, 524303, 13, 0, 524304, 13, 0, 524305, 13, 0, 524306, 13, 0, 524309, 0, 0, 589829, 13, 0, 589830, 13, 0, 589831, 13, 0, 589832, 13, 0, 589833, 13, 0, 589834, 13, 0, 589835, 13, 0, 589836, 13, 0, 589837, 13, 0, 589838, 13, 0, 589839, 13, 0, 589840, 13, 0, 589841, 13, 0, 589842, 13, 0, 589844, 0, 0, 589845, 0, 0, 655368, 13, 0, 655375, 13, 0, 655377, 13, 0, 720904, 13, 0, 720905, 13, 0, 720906, 13, 0, 720907, 13, 0, 720908, 13, 0, 720909, 13, 0, 720910, 13, 0, 720911, 13, 0, 720912, 13, 0, 786440, 13, 0, 786441, 13, 0, 786446, 13, 0, 786447, 13, 0 )
+
+[node name="tile_puas" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 851982, 4, 0, 851983, 4, 0, 851986, 4, 0, 851987, 4, 0, 851988, 4, 0, 851989, 4, 0, 1376290, 4, 0, 1376291, 4, 0, 1638416, 4, 0, 1638417, 4, 0, 1638418, 4, 0, 1638419, 4, 0, 1638428, 4, 0, 1638429, 4, 0, 1638430, 4, 0, 1638431, 4, 0 )
+
+[node name="tile_lv" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 0, 0, 17, 0, 0, 18, 0, 0, 19, 0, 0, 20, 0, 0, 21, 0, 0, 22, 0, 0, 23, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65552, 0, 0, 65553, 0, 0, 65554, 0, 0, 65555, 0, 0, 65556, 0, 0, 65557, 0, 0, 65558, 0, 0, 65559, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 0, 131088, 0, 0, 131089, 0, 0, 131090, 0, 0, 131091, 0, 0, 131092, 0, 0, 131093, 0, 0, 131094, 0, 0, 131095, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 196624, 0, 0, 196625, 0, 0, 196626, 0, 0, 196627, 0, 0, 196628, 0, 0, 196629, 0, 0, 196630, 0, 0, 196631, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262163, 0, 0, 262164, 0, 0, 262165, 0, 0, 262166, 0, 0, 262167, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327699, 0, 0, 327702, 0, 0, 327703, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 0, 393232, 0, 0, 393233, 0, 0, 393237, 0, 0, 393238, 0, 0, 393239, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 0, 458768, 0, 0, 458769, 0, 0, 458774, 0, 0, 458775, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 0, 0, 524292, 0, 0, 524307, 0, 0, 524308, 0, 0, 524310, 0, 0, 524311, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589843, 0, 0, 589846, 0, 0, 589847, 0, 0, 655360, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 0, 655376, 0, 0, 655378, 0, 0, 655379, 0, 0, 655380, 0, 0, 655381, 0, 0, 655382, 0, 0, 655383, 0, 0, 720896, 0, 0, 720897, 0, 0, 720898, 0, 0, 720899, 0, 0, 720900, 0, 0, 720901, 0, 0, 720902, 0, 0, 720903, 0, 0, 720913, 0, 0, 720914, 0, 0, 720915, 0, 0, 720916, 0, 0, 720917, 0, 0, 720918, 0, 0, 720919, 0, 0, 786432, 0, 0, 786433, 0, 0, 786434, 0, 0, 786435, 0, 0, 786436, 0, 0, 786437, 0, 0, 786438, 0, 0, 786439, 0, 0, 786442, 0, 0, 786443, 0, 0, 786444, 0, 0, 786445, 0, 0, 786448, 0, 0, 786449, 0, 0, 786450, 0, 0, 786451, 0, 0, 786452, 0, 0, 786453, 0, 0, 786454, 0, 0, 786455, 0, 0, 851968, 0, 0, 851969, 0, 0, 851970, 0, 0, 851971, 0, 0, 851972, 0, 0, 851973, 0, 0, 851974, 0, 0, 851975, 0, 0, 851976, 0, 0, 851977, 0, 0, 851978, 0, 0, 851979, 0, 0, 851980, 0, 0, 851981, 0, 0, 851982, 0, 0, 851983, 0, 0, 851984, 0, 0, 851985, 0, 0, 851986, 0, 0, 851987, 0, 0, 851988, 0, 0, 851989, 0, 0, 851990, 0, 0, 851991, 0, 0 )
+
+[node name="Elementos" type="Node2D" parent="."]
+
+[node name="end" parent="Elementos" instance=ExtResource( 5 )]
+position = Vector2( 193.873, 162.789 )
+
+[node name="pincho" type="Node2D" parent="Elementos"]
+
+[node name="puas2" parent="Elementos/pincho" instance=ExtResource( 12 )]
+position = Vector2( 304.496, 217.05 )
+
+[node name="puas3" parent="Elementos/pincho" instance=ExtResource( 12 )]
+position = Vector2( 336.496, 217.05 )
+
+[node name="puas4" parent="Elementos/pincho" instance=ExtResource( 12 )]
+position = Vector2( 560.044, 345.007 )
+
+[node name="puas5" parent="Elementos/pincho" instance=ExtResource( 12 )]
+position = Vector2( 271.921, 409.114 )
+
+[node name="puas6" parent="Elementos/pincho" instance=ExtResource( 12 )]
+position = Vector2( 303.921, 409.114 )
+
+[node name="puas7" parent="Elementos/pincho" instance=ExtResource( 12 )]
+position = Vector2( 463.921, 409.114 )
+
+[node name="puas8" parent="Elementos/pincho" instance=ExtResource( 12 )]
+position = Vector2( 495.921, 409.114 )
+
+[node name="tileFalso" type="Node2D" parent="Elementos"]
+
+[node name="tile_falso" parent="Elementos/tileFalso" instance=ExtResource( 17 )]
+position = Vector2( 249.177, 483.893 )
+
+[node name="portal" parent="Elementos" instance=ExtResource( 3 )]
+position = Vector2( 191.49, 288.887 )
+
+[node name="spawn" parent="Elementos" instance=ExtResource( 4 )]
+position = Vector2( 607.625, 229.038 )
+
+[node name="pistola" parent="Elementos" instance=ExtResource( 10 )]
+position = Vector2( 551.864, 367.557 )
+tipe_pistoll = 1
+
+[node name="plomeria" type="Node2D" parent="."]
+
+[node name="tubos" parent="plomeria" instance=ExtResource( 16 )]
+position = Vector2( 272.03, 48.2901 )
+dir_disparo = 3
+
+[node name="tubos2" parent="plomeria" instance=ExtResource( 16 )]
+position = Vector2( 498.229, 49.1474 )
+
+[node name="tubos3" parent="plomeria" instance=ExtResource( 16 )]
+position = Vector2( 495.741, 366.402 )
+dir_disparo = 2
+
+[node name="tubos4" parent="plomeria" instance=ExtResource( 16 )]
+position = Vector2( 272.887, 366.402 )
+dir_disparo = 1
+
+[node name="puntos" type="Node2D" parent="."]
+
+[node name="point" parent="puntos" instance=ExtResource( 6 )]
+position = Vector2( 387.283, 162.453 )
+
+[node name="personaje" parent="." instance=ExtResource( 1 )]
+position = Vector2( 387.853, 289.579 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 382.8, 224.152 )
+current = true
+zoom = Vector2( 0.75, 0.75 )
+
+[node name="SFX" parent="." instance=ExtResource( 14 )]
